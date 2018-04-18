@@ -1,0 +1,180 @@
+<html>
+	<head>
+
+
+
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+			crossorigin="anonymous"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<div id="root_container">
+			<div class="col-lg-2 col-md-3 col-sm-5" id="left-panel">
+
+				<!-- VK Widget -->
+				<script type="text/javascript" src="//vk.com/js/api/openapi.js?142"></script>
+				<div id="vk_groups"></div>
+				<script type="text/javascript">
+				VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, width: "auto", height: "400"}, 73009425);
+				</script>
+
+				<iframe height='160' width='100%' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/clubs/velo_kh_ua/latest-rides/477fdf279816c6e866364a7ef6b4bdaa2c3d353b?show_rides=false' id="strava-stats"></iframe>
+
+				<br>
+
+				<script type="text/javascript" src="//vk.com/js/api/openapi.js?142"></script>
+			</div>
+			<div class="col-lg-10 col-md-9 col-sm-7" id="main-panel">
+				<div class="cycle-outer">
+					<div class="cycle-wrapper">
+						<div class="cycle-body">
+							<div class="seat">
+								<span></span>
+							</div>
+							<div class="front-wheel-frame"></div>
+							<div class="top-frame"></div>
+							<div class="front-frame">
+								<div class="bottle-holder">
+									<span></span>
+								</div>
+							</div>
+							<div class="center-frame"></div>
+							<div class="back-frame"></div>
+							<div class="bottom-frame"></div>
+							<div class="handlebar-front"></div>
+							<div class="handlebar-curve"></div>
+						</div>
+						<div class="cycle-wheel cycle-wheel-back">
+							<div class="cycle-wheel-outer">
+								<div class="cycle-wheel-inner">
+									<div class="cycle-wheel-inner-padding">
+										<ul class="spoke-container">
+											<li class="spoke"></li>
+											<li class="spoke"></li>
+										</ul>
+										<div class="inner-disc"></div>
+										<div class="inner-disc-2"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cycle-wheel cycle-wheel-front">
+							<div class="cycle-wheel-outer">
+								<div class="cycle-wheel-inner">
+									<div class="cycle-wheel-inner-padding">
+										<ul class="spoke-container">
+											<li class="spoke"></li>
+											<li class="spoke"></li>
+										</ul>
+										<div class="inner-disc"></div>
+										<div class="inner-disc-2"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="chain-up"></div>
+						<div class="chain-bottom"></div>
+						<div class="chain-rotation">
+							<div class="outer-axle"></div>
+							<div class="chain-disc-outer">
+								<div class="chain-disc-inner"></div>
+							</div>
+							
+						</div>
+						<div class="chain-rods">
+							<div class="pedal-rod"></div>
+						</div>
+					</div>
+				</div>
+
+				<div id="sky">
+					<div id="clouds">
+						<img src="images/clouds.svg" alt="">
+						<img src="images/clouds.svg" alt="" class="faux-img">
+				    </div>
+				</div>
+				<div id="ground">
+					
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		/*
+		var canvas   = document.getElementById('grass'),
+		    positionInfo = canvas.getBoundingClientRect(),
+		    ctx      = canvas.getContext('2d'),
+		    stack    = [],
+		    w        = canvas.offsetWidth,
+		    h        = canvas.offsetHeight;
+
+		var drawer = function(){
+		  ctx.fillStyle="#ffffff";
+		  ctx.fillRect(0,0,w,h);
+		  stack.forEach(function(el){
+		      el();
+		  })
+		  requestAnimationFrame(drawer);
+		}
+		var anim = function(){
+		  var x = 0, y = 0;
+		  var maxTall = Math.random()*100+200;
+		  var maxSize = Math.random()*10+5;
+		  var speed = Math.random()*2;  
+		  var position = Math.random()*w-w/2;
+		  var c = function(l,u){return Math.round(Math.random()*(u||255)+l||0);}
+		  var color = 'rgb('+c(60,10)+','+c(201,50)+','+c(120,50)+')';
+		  return function(){
+		    var deviation=Math.cos(x/30)*Math.min(x/40,50),
+		        tall = Math.min(x/2,maxTall),
+		        size = Math.min(x/50,maxSize);
+		    x+=speed;
+		    ctx.save();
+		    ctx.strokeWidth=10;
+		    ctx.translate(w/2+position,h)
+		    ctx.fillStyle=color;
+		    ctx.beginPath();
+		    ctx.lineTo(-size,0);
+		    ctx.quadraticCurveTo(-size,-tall/2,deviation,-tall);
+		    ctx.quadraticCurveTo(size,-tall/2,size,0);
+		    ctx.fill();
+		    ctx.restore()
+		  }    
+		};
+		for(var x = 0; x<400;x++){stack.push(anim());}
+
+		drawer();*/
+	</script>
+
+
+
+	<!-- VK Widget -->
+	<div id="vk_community_messages"></div>
+	<script type="text/javascript">
+	VK.Widgets.CommunityMessages("vk_community_messages", 73009425, {expanded: "0",disableButtonTooltip: "1"});
+	</script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-75225157-2', 'auto');
+		ga('send', 'pageview');
+	</script>
+</html>
